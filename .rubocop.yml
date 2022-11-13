@@ -2,3 +2,7 @@ AllCops:
   Exclude:
     - '**/Gemfile'
     - '**/bundle'
+    - '**/db/**'
+
+Style/Documentation:
+  Enabled: false
