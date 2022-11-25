@@ -7,5 +7,6 @@ Rails.application.routes.draw do
 
   namespace :admins do
     get '/', to: 'home#index'
+    resources :categories
   end
 end
