@@ -35,7 +35,7 @@ module Admins
 
     def destroy
       @category.destroy
-      redirect_to admins_categories_path
+      redirect_to admins_categories_path, notice: 'Category successfully deleted!'
     end
 
     private

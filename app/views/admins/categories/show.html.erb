@@ -1,6 +1,6 @@
-<%=link_to 'Back to the list of categories', admins_categories_path %>
+<%= link_to 'Back to the list of categories', admins_categories_path %>
 <h1><%= @category.name %></h1>
 
-<%=link_to 'Edit category', edit_admins_category_path %> |
-<%=link_to 'Delete category', admins_category_path(@category), data: { 'turbo-method': :delete, 'turbo-confirm': 'Are You sure?'} %>
+<%= link_to 'Edit category', edit_admins_category_path %> |
+<%= link_to 'Delete category', admins_category_path(@category), data: { 'turbo-method': :delete, 'turbo-confirm': 'Are You sure?'} %>
 
