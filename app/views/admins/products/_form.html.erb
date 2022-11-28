@@ -1,0 +1,20 @@
+<% if @product.errors.any? %>
+    <p>Prohibited this product from being saved:</p>
+    <ul>
+    <% @product.errors.each do |msg| %>
+      <li><%= msg.full_message %></li>
+    <% end %>
+    </ul>
+<% end %>
+
+<%= form_with(model: [ :admins, @category, @product ]) do |f| %>
+  <p>
+    <%= f.label :name %><br/>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.submit 'Save' %>
+  </p>
+
+<% end %>
