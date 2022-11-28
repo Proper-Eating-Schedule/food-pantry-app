@@ -4,7 +4,9 @@ module Admins
   class CategoriesController < ApplicationController
     before_action :set_category, only: %i[show edit update destroy]
 
-    def show; end
+    def show
+      @products = Product.where(category_id: params[:id])
+    end
 
     def index
       @categories = Category.all
@@ -21,7 +23,7 @@ module Admins
       if @category.save
         redirect_to admins_categories_path, notice: 'Category successfully created!'
       else
-        render :new
+        render :new, status: :unprocessable_entity
       end
     end
 
@@ -29,7 +31,7 @@ module Admins
       if @category.update(category_params)
         redirect_to admins_categories_path, notice: 'Category successfully edited!'
       else
-        render :edit
+        render :edit, status: :unprocessable_entity
       end
     end
 
