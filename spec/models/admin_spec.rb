@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe Admin, type: :model do
-
   subject { Admin.new(email: 'test1234@test.com') }
 
   let!(:existing_admin) { Admin.create(email: 'test4567@test.com') }
@@ -23,7 +22,6 @@ RSpec.describe Admin, type: :model do
   end
 
   it 'is not valid when email has not proper format' do
-    expect( (subject.email).match?(/\A.+@.+\..+\z/) ).to eq(true)
+    expect(subject.email.match?(/\A.+@.+\..+\z/)).to eq(true)
   end
-
 end

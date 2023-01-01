@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   subject { User.new(email: 'test123@test.com', username: 'Test123') }
 
   let!(:existing_user) { User.create(email: 'test456@test.com', username: 'Test456') }
@@ -33,6 +32,6 @@ RSpec.describe User, type: :model do
   end
 
   it 'is not valid when email has not proper format' do
-    expect( (subject.email).match?(/\A.+@.+\..+\z/) ).to eq(true)
+    expect(subject.email.match?(/\A.+@.+\..+\z/)).to eq(true)
   end
 end
