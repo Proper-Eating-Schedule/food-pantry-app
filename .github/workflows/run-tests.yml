@@ -1,9 +1,21 @@
-name: run-rubocop-check
-run-name: rubocop
+name: run-tests
+run-name: rspec
 on: [push]
 jobs:
-  run-rubocop:
+  run-tests:
     runs-on: ubuntu-latest
+    services:
+      image: postgres:12
+      env:
+        POSTGRES_USER: postgres
+        POSTGRES_DB: postgres
+        POSTGRES_PASSWORD: postgres
+      ports: ['5432:5432']
+      options:
+        --health-cmd pg_isready
+        --health-interval 10s
+        --health-timeout 5s
+        --health-retries 5
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -16,5 +28,8 @@ jobs:
       - name: Install dependencies
         run: bundle install
 
-      - name: Run rubocop
+      - name: Prepare db
+        run: bundle exec rails db:prepare
+
+      - name: Run rspec
         run: bundle exec rspec
