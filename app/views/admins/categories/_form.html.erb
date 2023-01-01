@@ -1,4 +1,6 @@
-<%= form_with(model: [ :admins, @category ]) do|f| %>
+<%= render 'admins/shared/validation_errors', record: @category %>
+
+<%= form_with(model: [ :admins, @category ]) do |f| %>
   <p>
     <%= f.label :name %><br/>
     <%= f.text_field :name %>

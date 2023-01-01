@@ -1,6 +1,17 @@
 <%= link_to 'Back to the list of categories', admins_categories_path %>
 <h1><%= @category.name %></h1>
 
+<ul>
+  <% @products.each do |product| %>
+    <li class="product-item">
+      <div><%= product.name %></div>
+      <div><%= link_to 'Edit',edit_admins_category_product_path(@category, product) %></div>
+      <div><%= link_to 'Delete', admins_category_product_path(@category, product), data: { 'turbo-method': :delete, 'turbo-confirm': 'Are You sure?' } %></div>
+    </li>
+  <% end %>
+</ul>
+<%= link_to 'Add new product', new_admins_category_product_path(@category.id) %><br>
+<br>
 <%= link_to 'Edit category', edit_admins_category_path %> |
-<%= link_to 'Delete category', admins_category_path(@category), data: { 'turbo-method': :delete, 'turbo-confirm': 'Are You sure?'} %>
+<%= link_to 'Delete category', admins_category_path(@category), data: { 'turbo-method': :delete, 'turbo-confirm': 'Are You sure?' } %>
 

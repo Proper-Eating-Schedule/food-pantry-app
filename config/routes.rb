@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   namespace :admins do
     get '/', to: 'home#index'
-    resources :categories
+    resources :categories do
+      resources :products, only: %i[create update edit new destroy]
+    end
   end
 end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Category < ApplicationRecord
-  has_many :products, dependent: :destroy
+class Product < ApplicationRecord
   validates :name, presence: true, uniqueness: true
+  belongs_to :category
 end

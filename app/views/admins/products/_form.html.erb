@@ -1,0 +1,13 @@
+<%= render 'admins/shared/validation_errors', record: @product %>
+
+<%= form_with(model: [ :admins, @category, @product ]) do |f| %>
+  <p>
+    <%= f.label :name %><br/>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.submit 'Save' %>
+  </p>
+
+<% end %>
