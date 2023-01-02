@@ -32,4 +32,9 @@ jobs:
         run: bundle exec rails db:prepare
 
       - name: Run rspec
+        env:
+          DATABASE_URL: postgres://postgres:@localhost:5432/test
+          RAILS_ENV: test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
         run: bundle exec rspec
