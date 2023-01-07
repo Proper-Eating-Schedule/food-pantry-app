@@ -7,7 +7,7 @@ RSpec.describe Category, type: :model do
 
   let!(:existing_category) { Category.create(name: 'Diary') }
 
-  it 'is valid with valid atrributes' do
+  it 'is valid with valid attributes' do
     expect(subject).to be_valid
   end
 
