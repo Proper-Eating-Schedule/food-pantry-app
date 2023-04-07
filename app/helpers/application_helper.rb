@@ -2,4 +2,5 @@
 
 # top-level documentation
 module ApplicationHelper
+  include Pagy::Frontend
 end
