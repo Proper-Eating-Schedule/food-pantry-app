@@ -9,6 +9,7 @@
       <div><%= link_to 'Delete', admins_category_product_path(@category, product), data: { 'turbo-method': :delete, 'turbo-confirm': 'Are You sure?' } %></div>
     </li>
   <% end %>
+  <%== pagy_nav(@pagy) %>
 </ul>
 <%= link_to 'Add new product', new_admins_category_product_path(@category.id) %><br>
 <br>
