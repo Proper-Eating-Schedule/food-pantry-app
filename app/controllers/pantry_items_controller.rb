@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 class PantryItemsController < ApplicationController
+  include Pagy::Backend
   before_action :set_pantry_item, only: %i[show edit update destroy]
 
   def show; end
 
   def index
-    @pantry_items = PantryItem.all
+    @pagy, @pantry_items = pagy(PantryItem.all)
   end
 
   def new

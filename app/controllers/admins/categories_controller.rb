@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
 module Admins
-  class CategoriesController < ApplicationController
+  class CategoriesController < BaseController
+    include Pagy::Backend
     before_action :set_category, only: %i[show edit update destroy]
-
     def show
-      @products = Product.where(category_id: params[:id])
+      @pagy, @products = pagy(Product.where(category_id: params[:id]))
     end
 
     def index
-      @categories = Category.all
+      @pagy, @categories = pagy(Category.all, items: 10)
     end
 
     def new
