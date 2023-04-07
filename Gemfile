@@ -77,3 +77,4 @@ end
 
 gem 'rubocop', require: false
 gem 'devise', '4.8.1'
+gem 'pagy', '~> 6.0' # omit patch digit

@@ -1,0 +1,14 @@
+<%= link_to 'Back to home', root_path %>
+<h1>Your Pantry Items</h1>
+
+<ul>
+  <% @pantry_items.each do |pantry_item| %>
+  <li>
+    <%= pantry_item.name %> | <%= "#{pantry_item.quantity} #{pantry_item.measurement}" %> | <%= pantry_item.expire_date %> |
+    <%= link_to 'Edit', edit_pantry_item_path(pantry_item) %> |
+    <%= link_to 'Delete', pantry_item_path(pantry_item), data: { 'turbo-method': :delete, 'turbo-confirm': 'Are You sure?' }%>
+  </li>
+  <% end %>
+</ul>
+<%== pagy_nav(@pagy) %> <br>
+<%= link_to 'Add new pantry item', new_pantry_item_path %>

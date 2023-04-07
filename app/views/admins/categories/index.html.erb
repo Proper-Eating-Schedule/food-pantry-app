@@ -5,4 +5,5 @@
     <li><%= link_to category.name, admins_category_path(category) %></li>
   <% end %>
 </ul>
+<%== pagy_nav(@pagy) %> <br>
 <%= link_to 'Add new category', new_admins_category_path %>
