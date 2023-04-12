@@ -1,3 +1,7 @@
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/models/**'
+
 AllCops:
   Exclude:
     - '**/Gemfile'
@@ -8,3 +12,5 @@ AllCops:
 
 Style/Documentation:
   Enabled: false
+
+
