@@ -29,12 +29,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_01_184451) do
   end
 
   create_table "pantry_items", force: :cascade do |t|
+    t.bigint "product_id"
     t.string "name"
     t.decimal "quantity"
     t.string "measurement"
     t.date "expire_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_pantry_items_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -63,4 +65,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_01_184451) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "pantry_items", "products"
 end

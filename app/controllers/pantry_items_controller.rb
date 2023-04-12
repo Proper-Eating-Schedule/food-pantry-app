@@ -2,7 +2,7 @@
 
 class PantryItemsController < ApplicationController
   before_action :set_pantry_item, only: %i[show edit update destroy]
-
+  before_action :set_products_for_select, only: %i[new edit create update]
   def show; end
 
   def index
@@ -17,6 +17,7 @@ class PantryItemsController < ApplicationController
 
   def create
     @pantry_item = PantryItem.new(pantry_item_params)
+    puts @pantry_item.inspect
     if @pantry_item.save
       redirect_to pantry_items_path, notice: 'Pantry Item successfully created!'
     else
@@ -39,11 +40,15 @@ class PantryItemsController < ApplicationController
 
   private
 
+  def pantry_item_params
+    params.require(:pantry_item).permit(:product_id, :name, :quantity, :measurement, :expire_date)
+  end
+
   def set_pantry_item
     @pantry_item = PantryItem.find(params[:id])
   end
 
-  def pantry_item_params
-    params.require(:pantry_item).permit(:name, :quantity, :measurement, :expire_date)
+  def set_products_for_select
+    @products_for_select = Product.all
   end
 end

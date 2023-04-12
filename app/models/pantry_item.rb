@@ -5,4 +5,5 @@ class PantryItem < ApplicationRecord
   validates :quantity, presence: true
   validates :measurement, presence: true
   validates :expire_date, presence: true
+  belongs_to :product
 end
