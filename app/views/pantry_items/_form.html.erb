@@ -1,0 +1,27 @@
+<%= form_with(model: [@pantry_item]) do |f| %>
+  <p>
+    <%= f.label :name %><br/>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :quantity %><br/>
+    <%= f.number_field :quantity %>
+  </p>
+  <p>
+    <%= f.label :measurement %><br/>
+    <%= f.text_field :measurement %>
+  </p>
+  <p>
+    <%= f.label :expire_date, 'Expire Date' %><br/>
+    <%= f.date_field :expire_date %>
+  </p>
+  <p>
+    <%= f.label :product_id, 'Select Product' %><br/>
+    <%= f.select :product_id, Product.all.collect { |product| [product.name, product.id] }, {}, class: 'product' %>
+  </p>
+
+  <p>
+    <%= f.submit 'Save' %>
+  </p>
+
+<% end %>
